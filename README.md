@@ -72,8 +72,6 @@ param (
 #### Pasting into UE
 - Open or create the Limits Data Asset, then **CTRL+V** to apply.
 
----
-
 ## To-do
 **AnimBP**
 - PoseDriver support
@@ -84,5 +82,3 @@ param (
 ## If you'd like to support me
 
 My Patreon is [here](https://www.patreon.com/amMatt).
-
----
