@@ -9,7 +9,7 @@ Basically you:
 * Copy/paste (CTRL V) into an Animation Blueprint in UE and all the nodes will be pasted. 
   * The output will also be saved to the path you specified.
 
-It currently has support for Kawaii nodes, Bone modifiers and Constraints. There is also a second script for the Kawaii limit assets (LimitsDataAsset_ConvertLimits_0.1.ps1), which works pretty much the same way.
+It currently has support for Kawaii nodes, Bone modifiers, Constraints and Layered bone blends. There is also a second script for the Kawaii limit assets (LimitsDataAsset_ConvertLimits_0.1.ps1), which works pretty much the same way.
 
 To-do:
 * AnimBP Assets:
