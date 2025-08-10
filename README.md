@@ -13,9 +13,7 @@ It currently has support for Kawaii nodes, Bone modifiers and Constraints. There
 
 To-do:
 * AnimBP Assets:
-  * Support for LayeredBoneBlends
   * Support for PoseDrivers
-  * Support for Bone Exclusions
 
 * BoneConstraintAsset:
   * Create script for this
