@@ -1,19 +1,83 @@
-I got *very* tired of manually remaking physic nodes for a mod, so I finally decided to make a few scripts to speed up the process.
+# Various UE Animation Blueprint Scripts
 
-I intend to expand on it and make it more user friendly but I figured its worth sharing, even in it's current state.
+A collection of scripts to ease the process of working with animation blueprints, such as converting FModel JSON exports into UE format.
 
-Basically you:
-* Export an animation blueprint from the game as JSON
-* Input the path to the JSON and an output path (txt file)
-* Run the script (AnimBP_ConvertNodes_0.4.ps1)
-* Copy/paste (CTRL V) into an Animation Blueprint in UE and all the nodes will be pasted. 
-  * The output will also be saved to the path you specified.
+---
 
-It currently has support for Kawaii nodes, Bone modifiers, Constraints and Layered bone blends. There is also a second script for the Kawaii limit assets (LimitsDataAsset_ConvertLimits_0.1.ps1), which works pretty much the same way.
+## AnimBP Converter — `AnimBP_ConvertNodes`
 
-To-do:
-* AnimBP Assets:
-  * Support for PoseDrivers
+### What it does
+- Reads an exported **Animation Blueprint JSON**.
+- Finds supported AnimGraph nodes and converts them to UE’s **Copy/Paste** format.
+- Auto-positions nodes so they don’t paste on top of each other.
+- Copies output to your clipboard and saves it to a `.txt`.
 
-* BoneConstraintAsset:
-  * Create script for this
+### Currently supported nodes
+- **KawaiiPhysics** (physics settings, curves, limits, ExcludeBones, LimitsDataAsset refs)
+- **ModifyBone**
+- **Constraint**
+- **LayeredBoneBlend** (BranchFilters, weights, flags)
+
+### Parameters
+- `-InputJsonPath` → Path to the exported input JSON (from FModel)
+- `-OutputTxtPath` → Where to save the UE paste text
+- `-AnimBPClass` → The `AnimBlueprintGeneratedClass` name (e.g., `Post_1024303_Physics_C`)
+
+### Usage
+Change the following params at the top of the scripts and then run the script. See above for parameter specifics.
+```powershell
+param (
+    [string]$InputJsonPath = "T:\Modding\Unreal Engine\_Scripts\Assets\Example.json",
+    [string]$OutputTxtPath = "T:\Modding\Unreal Engine\_Scripts\AnimBP_Output.txt",
+    [string]$AnimBPClass = "Example_C"
+)
+```
+
+### Pasting into UE
+1. Open your target Animation Blueprint.
+2. Press **CTRL+V** — nodes appear with the same settings as the JSON.
+3. The same text is also saved to the file specified in `-OutputTxtPath`.
+
+---
+
+## Kawaii Limits Data Asset Converter — `LimitsDataAsset_ConvertLimits`
+
+### What it does
+- Reads a **KawaiiPhysics Limits Data Asset** exported as JSON.
+- Finds supported Capsule Limits and converts them to UE’s **Copy/Paste** format.
+- Copies output to your clipboard and saves it to a `.txt`.
+
+### Parameters
+- `-InputJsonPath` → Path to the exported JSON
+- `-OutputTxtPath` → Where to save the UE paste text
+
+### Usage
+Change the following params at the top of the scripts and then run the script. See above for parameter specifics.
+```powershell
+param (
+    [string]$InputJsonPath = "T:\Modding\Unreal Engine\_Scripts\Assets\Example.json",
+    [string]$OutputTxtPath = "T:\Modding\Unreal Engine\_Scripts\PA_Output.txt",
+)
+```
+
+### Pasting into UE
+- Open or create the Limits Data Asset, then **CTRL+V** to apply.
+
+---
+
+## Quick start
+1. Export desired assets from the game as **JSON**.  
+2. Adjust paths in script(s) and run them.  
+3. **CTRL+V** inside Unreal to paste nodes / limits.  
+4. Done.
+
+---
+
+## To-do
+**AnimBP**
+- PoseDriver support
+
+**Assets**
+- BoneConstraintAsset: create script
+
+---
