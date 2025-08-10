@@ -22,10 +22,10 @@ Each available script is described below.
 - Copies output to your clipboard and saves it to a `.txt`.
 
 #### Currently supported nodes
-- **KawaiiPhysics** (physics settings, curves, limits, ExcludeBones, LimitsDataAsset refs)
+- **KawaiiPhysics** (Physics settings, curves, limits, bone exclusions, data asset references)
 - **ModifyBone**
 - **Constraint**
-- **LayeredBoneBlend** (BranchFilters, weights, flags)
+- **LayeredBoneBlend**
 
 #### Parameters
 - `-InputJsonPath` → Path to the exported input JSON (from FModel)
